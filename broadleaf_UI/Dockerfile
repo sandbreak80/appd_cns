@@ -1,7 +1,9 @@
 FROM centos
 
 COPY ROOT.jar ui/bin/
+COPY start-ui-site.sh .
 
+RUN chmod +x start-ui-site.sh
 RUN yum -y install java-1.8.0-openjdk-devel
 RUN yum -y install net-tools
 RUN yum -y install lsof
@@ -13,6 +15,5 @@ EXPOSE 8443
 EXPOSE 443
 EXPOSE 80
 
-#!/bin/bash
 CMD ./start-ui-site.sh
 
