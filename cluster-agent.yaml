@@ -1,0 +1,15 @@
+apiVersion: appdynamics.com/v1alpha1
+kind: Clusteragent
+metadata:
+  name: k8s-cluster-agent
+  namespace: appdynamics
+spec:
+  appName: "sock_shop"
+  controllerUrl: "https://kickstarter.saas.appdynamics.com:443"
+  account: "kickstarter"
+  # docker image info
+  image: "sandbreak80/broadleaf:cluster-agent-4.5.16"
+  serviceAccountName: appdynamics-cluster-agent
+  ### Uncomment the following two lines if you need pull secrets
+  imagePullSecrets:
+    name: "regcred"
