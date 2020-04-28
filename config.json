@@ -1,0 +1,10 @@
+{
+	"localport":3000,
+    "https":true,
+	"cwom_config": {
+		"turboserver": "https://s2.appdynamics-demo.com/",
+		"username": "administrator",
+		"password": "6Kx8B^x$3RxwbqTa"
+	}
+
+}

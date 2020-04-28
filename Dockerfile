@@ -1,10 +1,15 @@
-FROM ubuntu:18.04
+FROM node:8.17.0-alpine
 
-RUN apt-get update && apt-get install openjdk-8-jdk -y && apt-get install maven -y && apt-get install zip -y && apt-get install wget -y && apt-get install git -y
-RUN wget https://github.com/BroadleafCommerce/DemoSite/archive/broadleaf-6.0.6-GA.zip && unzip broadleaf-6.0.6-GA.zip && cd DemoSite-broadleaf-6.0.6-GA/ && mvn clean install && cd site && mvn spring-boot:run
+RUN apk update
+RUN apk add vim curl git zip wget
 
-EXPOSE 8443
-EXPOSE 443
-EXPOSE 80
-EXPOSE 9001
-EXPOSE 8983
+RUN git clone https://github.com/Appdynamics/CWOM-Action-Integration.git
+RUN cd CWOM-Action-Integration
+RUN npm install
+RUN npm install common log4js@1.1.1 express morgan cookie-parser async needle moment https-proxy-agent http-proxy-agent q request-promise request ejs
+
+WORKDIR /CWOM-Action-Integration
+COPY config.json /CWOM-Action-Integration/config.json
+RUN npm start
+
+EXPOSE 3000
