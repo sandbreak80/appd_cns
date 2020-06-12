@@ -2,9 +2,6 @@
 
 if [[ $(id -u) -ne 0 ]] ; then echo "Please run as root" ; exit 1 ; fi
 
-echo 'APT::Get::Assume-Yes "true";' > /etc/apt/apt.conf.d/jp90forceyes
-echo 'APT::Get::force-yes "true";' >> /etc/apt/apt.conf.d/jp90forceyes
-
 apt-get update
 apt-get upgrade
 
